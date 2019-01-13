@@ -9,9 +9,8 @@ export class TacheComponent implements OnInit {
   //mapping dynamique, new property to share with parent component in template
   @Input()
   _tacheName:String;
-  //private _tacheName: String = 'sauvegarder une tache quelconque';
-
-  private _tacheStatus: String = 'stable';
+  @Input()
+   _tacheStatus: String;
  
   constructor() { }
 

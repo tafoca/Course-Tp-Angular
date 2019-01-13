@@ -10,6 +10,14 @@ export class AppComponent {
   //TODO 2: 2ieme type communication: liason par propriete. [sens coponent -> vers le typescript]
   isAuth : boolean;
 
+  //init value of child attribut _tacheName
+  tacheNameone = 'task one - 1';
+  tacheNametwo = 'task two - 2';
+  tacheNamethree = 'task three - 3';
+  //-- init value of child attribut _tacheStatus of tacheCopoment
+   state1= 'stable';
+   state2= 'instatble';
+   state3= 'stable';
   constructor(){
     setTimeout(
       () => {
