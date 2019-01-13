@@ -13,13 +13,11 @@
         <h2>Mes Taches</h2>
   
         <ul class="list-group">
-  
-          <app-tache [_tacheName]="tacheNameone" [_tacheStatus]="state1"  ></app-tache>
-  
-          <app-tache [_tacheName]="tacheNametwo"[_tacheStatus]="state2"></app-tache>
-  
-          <app-tache [_tacheName]="tacheNamethree" [_tacheStatus]="state3"></app-tache>
-  
+         <!--   directive ng-for pour iterer une collection -->
+          <app-tache *ngFor="let tache of taches"
+                  [_tacheName]="tache.name" 
+                  [_tacheStatus]="tache.status">
+          </app-tache>
         </ul>
         
         <button type="button" class="btn btn-success" [disabled]="!isAuth" (click)="onActivateAlle()">All activate</button>
