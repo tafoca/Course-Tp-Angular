@@ -16,7 +16,7 @@ export class AppComponent {
   tacheNamethree = 'task three - 3';
   //-- init value of child attribut _tacheStatus of tacheCopoment
    state1= 'stable';
-   state2= 'instatble';
+   state2= 'instable';
    state3= 'stable';
   constructor(){
     setTimeout(

@@ -2,6 +2,12 @@
 <!--TODO 1 : liason de donne grace a l'iterpolation
    [sens coponent -> vers le typescript] {{nomattr ou getter du type script}}-->
 <li class="li-group-item">
-  <h4>Titre composant tache : {{ _tacheName }} -->  Status: {{  _tacheStatus }}</h4>
+ 
+  <h4>  <i style="display:inline-block; background-color: red;border-radius: 5px; width: 10px; height: 10px;" *ngIf="_tacheStatus == 'instable'"></i>
+    <i style="display:inline-block; background-color: rgb(35, 184, 80);border-radius: 5px; width: 10px; height: 10px;" *ngIf="_tacheStatus == 'stable'"></i>
+ 
+   Titre composant tache : {{ _tacheName }} -->  Status: {{  _tacheStatus }} 
+     
+  </h4>
   <input type="text" name="tache_name" class="form-control"  [(ngModel)]="_tacheName"/>
 </li>
