@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'Task app';
+  //TODO 2: 2ieme type communication: liason par propriete. [sens coponent -> vers le typescript]
+  isAuth : boolean;
+
+  constructor(){
+    setTimeout(
+      () => {
+        this.isAuth =true;
+      },4000
+    ); //callback anonymous fct with set status of isAuth to true after 4s
+  }
 }
