@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-tache',
@@ -6,9 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tache.component.scss']
 })
 export class TacheComponent implements OnInit {
-
-  private _tacheName: String = 'sauvegarder une tache quelconque';
-
+  //mapping dynamique, new property to share with parent component in template
+  @Input()
+  _tacheName:String;
+  //private _tacheName: String = 'sauvegarder une tache quelconque';
 
   private _tacheStatus: String = 'stable';
  
@@ -16,17 +17,17 @@ export class TacheComponent implements OnInit {
 
   ngOnInit() {
   }
-  public get tacheName(): String {
+  public getTacheName(): String {
     return this._tacheName;
   }
-  public set tacheName(value: String) {
+  public setTacheName(value: String) {
     this._tacheName = value;
   }
 
-  public get tacheStatus(): String {
+  public getTacheStatus(): String {
     return this._tacheStatus;
   }
-  public set tacheStatus(value: String) {
+  public setTacheStatus(value: String) {
     this._tacheStatus = value;
   }
 
