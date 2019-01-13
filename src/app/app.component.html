@@ -22,8 +22,10 @@
   
         </ul>
         
-        <button type="button" class="btn btn-success" [disabled]="!isAuth">All activate</button>
-        <!-- //TODO 2-1: liason par propriete. isAuth-->
+        <button type="button" class="btn btn-success" [disabled]="!isAuth" (click)="onActivateAlle()">All activate</button>
+        <!-- //TODO 2-1: liason par propriete. isAuth [ppte] and (event liason )
+        TODO 3 : liason inverse du template vers le typeScript -- liason par event
+        -->
   
       </div>
   

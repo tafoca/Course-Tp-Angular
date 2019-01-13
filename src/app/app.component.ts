@@ -17,4 +17,9 @@ export class AppComponent {
       },4000
     ); //callback anonymous fct with set status of isAuth to true after 4s
   }
+
+  onActivateAlle(){
+    console.log('activation of all tasks same time');
+    //code de notre fonction
+  }
 }
