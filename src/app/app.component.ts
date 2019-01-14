@@ -25,6 +25,24 @@ export class AppComponent {
       status:'stable'
      }
    ];
+   //Le pipe  async  est un cas particulier mais extrêmement utile dans les applications Web, 
+   //car il permet de gérer des données asynchrones, par exemple des données que l'application doit récupérer sur un serveur. 
+   // pour cette phase nous utilsone le promise pr simuler ce comportemnent
+   update_at = new Promise((resolve, reject) => {
+
+    const date = new Date();
+
+    setTimeout(
+
+      () => {
+
+        resolve(date);
+
+      }, 1000
+
+    );
+
+  });
 
   constructor(){
     setTimeout(
