@@ -1,9 +1,12 @@
 <!-- tamplate component task -->
 <!--TODO 1 : liason de donne grace a l'iterpolation
    [sens coponent -> vers le typescript] {{nomattr ou getter du type script}}-->
-<li class="li-group-item">
+<li [ngClass]="{'list-group-item': true,
+'list-group-item-success': _tacheStatus === 'stable',
+
+'list-group-item-danger': _tacheStatus === 'instable'}">
  
-  <h4>  <i style="display:inline-block; background-color: red;border-radius: 5px; width: 10px; height: 10px;" *ngIf="_tacheStatus == 'instable'"></i>
+  <h4 [ngStyle]="{'color': getColor()}">  <i style="display:inline-block; background-color: red;border-radius: 5px; width: 10px; height: 10px;" *ngIf="_tacheStatus == 'instable'"></i>
     <i style="display:inline-block; background-color: rgb(35, 184, 80);border-radius: 5px; width: 10px; height: 10px;" *ngIf="_tacheStatus == 'stable'"></i>
  
    Titre composant tache : {{ _tacheName }} -->  Status: {{  _tacheStatus }} 

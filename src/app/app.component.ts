@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'Task app';
+  title = 'Task Board';
   //TODO 2: 2ieme type communication: liason par propriete. [sens coponent -> vers le typescript]
   isAuth : boolean;
 

@@ -30,5 +30,12 @@ export class TacheComponent implements OnInit {
     this._tacheStatus = value;
   }
 
+  public getColor(): String{
+    if(this._tacheStatus == 'stable'){
+      return 'green';
+    }else if(this._tacheStatus == 'instable'){
+      return 'red';
+    }
+  }
 
 }
