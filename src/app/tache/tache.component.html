@@ -13,4 +13,10 @@
      
   </h4>
   <input type="text" name="tache_name" class="form-control"  [(ngModel)]="_tacheName"/>
+  
+  <button class="btn btn-sm btn-success" *ngIf="_tacheStatus === 'instable'" (click)="onSwitch()">Activate</button>
+
+<button class="btn btn-sm btn-danger"  *ngIf="_tacheStatus === 'stable'" (click)="onSwitch()">Desactivate</button>
+
+
 </li>

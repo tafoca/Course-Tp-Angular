@@ -13,10 +13,13 @@
         <h2>Mes Taches</h2>
         <h4>last update : {{ update_at | async | date: 'short' }}</h4>
         <ul class="list-group">
-         <!--   directive ng-for pour iterer une collection -->
-          <app-tache *ngFor="let tache of taches"
+         <!--   directive ng-for pour iterer une collection  
+          index indique a chaque tacheComp sonindice de correspondance dans le array du service-->
+          <app-tache *ngFor="let tache of taches; let i = index"
                   [_tacheName]="tache.name" 
-                  [_tacheStatus]="tache.status">
+                  [_tacheStatus]="tache.status"
+                  [index]="i"
+                  >
           </app-tache>
         </ul>
         

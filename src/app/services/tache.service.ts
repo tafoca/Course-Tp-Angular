@@ -34,4 +34,13 @@ export class TacheService{
         }
     
     }
+
+    //gestion activation ou desactivation une tache par son indice
+    switchOnOne(i:number){
+        this.taches[i].status = 'stable';
+    }
+    
+    switchOffOne(i:number){
+        this.taches[i].status = 'instable';
+    }
 }

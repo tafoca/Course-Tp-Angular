@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { TacheService } from '../services/tache.service';
 
 @Component({
   selector: 'app-tache',
@@ -11,8 +12,13 @@ export class TacheComponent implements OnInit {
   _tacheName:String;
   @Input()
    _tacheStatus: String;
- 
-  constructor() { }
+
+   @Input()
+   index: number; //banding capture de l'index d'un composant vue dans un ensemble
+  //injection tacheService 
+  constructor(private tacheService: TacheService) {
+
+   }
 
   ngOnInit() {
   }
@@ -35,6 +41,15 @@ export class TacheComponent implements OnInit {
       return 'green';
     }else if(this._tacheStatus == 'instable'){
       return 'red';
+    }
+  }
+
+  //method changement status comme un switch booleen ou inverseur d'etat
+  public onSwitch(){
+    if (this._tacheStatus == 'stable') {
+        this.tacheService.switchOffOne(this.index);   
+    } else if(this._tacheStatus == 'instable'){
+      this.tacheService.switchOnOne(this.index);  
     }
   }
 
