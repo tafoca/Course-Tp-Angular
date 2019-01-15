@@ -6,6 +6,7 @@ import {FormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { CompFirstComponent } from './comp-first/comp-first.component';
 import { TacheComponent } from './tache/tache.component';
+import { TacheService } from './services/tache.service';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,9 @@ import { TacheComponent } from './tache/tache.component';
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    TacheService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

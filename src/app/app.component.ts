@@ -1,30 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { TacheService } from './services/tache.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+  
   title = 'Task Board';
   //TODO 2: 2ieme type communication: liason par propriete. [sens coponent -> vers le typescript]
   isAuth : boolean;
 
    //stockage ergonomique en encapsulant dans un tableau d'objet
-   taches = [
-     {
-      name:'task one - 1',
-      status:'stable'
-     },
-     {
-      name:'task two - 2',
-      status:'instable'
-     },
-     {
-      name:'task three - 3',
-      status:'stable'
-     }
-   ];
+   taches = [];
    //Le pipe  async  est un cas particulier mais extrêmement utile dans les applications Web, 
    //car il permet de gérer des données asynchrones, par exemple des données que l'application doit récupérer sur un serveur. 
    // pour cette phase nous utilsone le promise pr simuler ce comportemnent
@@ -43,8 +32,8 @@ export class AppComponent {
     );
 
   });
-
-  constructor(){
+//injection sevice , access global
+  constructor(private tacheService:TacheService){
     setTimeout(
       () => {
         this.isAuth =true;
@@ -52,8 +41,29 @@ export class AppComponent {
     ); //callback anonymous fct with set status of isAuth to true after 4s
   }
 
-  onActivateAlle(){
-    console.log('activation of all tasks same time');
+  ngOnInit(): void {
+    this.taches = this.tacheService.taches;
+  }
+
+  onActivateAll(){
+    if (confirm("Voulez vous vraiment rendre au status stable toute les taches ? ")) {
+      console.log('activation of all tasks same time');
     //code de notre fonction
+    this.tacheService.switchOnAll();
+    } else {
+      return null;
+    }
+    
+  }
+
+  onDisactivateAll(){
+    if (confirm("Voulez vous vraiment rendre au status instable toute les taches ? ")) {
+      console.log('desactivation of all tasks same time');
+    //code de notre fonction
+    this.tacheService.switchOffAll();
+    } else {
+      return null;
+    }
+    
   }
 }
