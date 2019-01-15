@@ -8,14 +8,16 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./single-tache.component.scss']
 })
 export class SingleTacheComponent implements OnInit {
-  name: string = 'Tache';
+  name: string = 'Tache default';
   status: string = 'State';
 
 
   constructor(private tacheService:TacheService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.snapshot.params['id'];
+   const id = this.route.snapshot.params['id'];
+   this.name = this.tacheService.getTacheById(+id).name;
+   this.status = this.tacheService.getTacheById(+id).status;
   }
 
 }

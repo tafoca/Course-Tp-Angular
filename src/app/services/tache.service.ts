@@ -1,14 +1,17 @@
 export class TacheService{
     taches = [
         {
+         id:1,
          name:'task one - 1',
          status:'stable'
         },
         {
+         id:2,
          name:'task two - 2',
          status:'instable'
         },
         {
+         id:3,
          name:'task three - 3',
          status:'stable'
         }
@@ -42,5 +45,14 @@ export class TacheService{
     
     switchOffOne(i:number){
         this.taches[i].status = 'instable';
+    }
+
+    getTacheById(id:number){
+       const tache =  this.taches.find(
+         (t)=>{
+                return (t.id === id);
+            }
+        );
+        return tache;
     }
 }
