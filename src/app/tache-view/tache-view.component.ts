@@ -1,12 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { TacheService } from '../services/tache.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-tache-view',
   templateUrl: './tache-view.component.html',
   styleUrls: ['./tache-view.component.scss']
 })
-export class TacheViewComponent implements OnInit {
+export class TacheViewComponent implements OnInit, OnDestroy {
+
+  /*STEP 4 : souscrire au Subject depuis ce composant pour recevoir les données émises,
+     émettre les premières données, et implémenter  OnDestroy  pour détruire la souscription.*/
+     private tacheSubscription: Subscription;
+
 
   //TODO 2: 2ieme type communication: liason par propriete. [sens coponent -> vers le typescript]
   isAuth : boolean;
@@ -20,6 +26,7 @@ export class TacheViewComponent implements OnInit {
 
     const date = new Date();
 
+    
     setTimeout(
 
       () => {
@@ -41,7 +48,12 @@ export class TacheViewComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.taches = this.tacheService.taches;
+    this.tacheSubscription= this.tacheService.tacheSubject.subscribe(
+      (taches: any[]) => {
+        this.taches = taches;
+      }
+    );
+    this.tacheService.emitTaceSubject();
   }
 
   onActivateAll(){
@@ -64,6 +76,10 @@ export class TacheViewComponent implements OnInit {
       return null;
     }
     
+  }
+//STEP 4 (continuition)
+  ngOnDestroy(): void {
+    this.tacheSubscription.unsubscribe();
   }
 
 }

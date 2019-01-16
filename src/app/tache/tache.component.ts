@@ -15,6 +15,9 @@ export class TacheComponent implements OnInit {
 
    @Input()
    index: number; //banding capture de l'index d'un composant vue dans un ensemble
+
+   @Input() id: number; //conserver etat lors du transite detail <-> tous les elts
+
   //injection tacheService 
   constructor(private tacheService: TacheService) {
 

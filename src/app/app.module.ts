@@ -13,12 +13,18 @@ import { TacheViewComponent } from './tache-view/tache-view.component';
 import { RouterModule, Routes } from '@angular/router';
 import { SingleTacheComponent } from './single-tache/single-tache.component';
 import { AuthService } from './services/auth.service';
+import { FourOhFourComponent } from './four-oh-four/four-oh-four.component';
+import { AuthGuard } from './services/auth-guard.service';
+import { EditTacheComponent } from './edit-tache/edit-tache.component';
 
 const appRoutes: Routes = [
-  { path: 'taches', component: TacheViewComponent },
+  { path: 'taches', canActivate: [AuthGuard], component: TacheViewComponent },
+  { path: 'taches/:id', canActivate: [AuthGuard], component: SingleTacheComponent },
   { path: '', component: TacheViewComponent },
   {path: 'auth', component: AuthComponent},
-  {path: 'taches/:id',component:SingleTacheComponent}
+  {path: 'taches/:id',component:SingleTacheComponent},
+  { path: 'not-found', component: FourOhFourComponent },//redirect others url in notfound url
+  { path: '**', redirectTo: 'not-found' }
 ];
 
 //export const appRouting = RouterModule.forRoot(appRoutes);
@@ -29,7 +35,9 @@ const appRoutes: Routes = [
     TacheComponent,
     AuthComponent,
     TacheViewComponent,
-    SingleTacheComponent
+    SingleTacheComponent,
+    FourOhFourComponent,
+    EditTacheComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +46,8 @@ const appRoutes: Routes = [
   ],
   providers: [
     TacheService,
-    AuthService //very important import servicice in provider else cll/inject is produise an error
+    AuthService ,//very important import servicice in provider else cll/inject is produise an error
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })

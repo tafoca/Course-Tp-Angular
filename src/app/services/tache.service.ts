@@ -1,4 +1,7 @@
+import { Subject } from "rxjs";
+
 export class TacheService{
+    //STEP 1 (Subject Observable): 
     taches = [
         {
          id:1,
@@ -16,6 +19,16 @@ export class TacheService{
          status:'stable'
         }
       ];
+      //--- endStep----
+       //STEP 2 : indication type on data manage by Subject
+       tacheSubject = new Subject<any[]>();
+
+      /*STEP 3 : créer une méthode qui, quand le service reçoit de nouvelles données,
+       fait émettre ces données par le Subject et appeler cette méthode dans toutes 
+       les méthodes qui en ont besoin ;*/
+       emitTaceSubject() {
+        this.tacheSubject.next(this.taches.slice());
+      }
 
     //mettre stable toute les tache
     switchOnAll() {
@@ -25,6 +38,7 @@ export class TacheService{
           tache.status = 'stable';
     
         }
+        this.emitTaceSubject();
     
     }
     //mettre instable toute les taches [dual de switchOnAll() ]
@@ -33,7 +47,7 @@ export class TacheService{
         for(let tache of this.taches) {
     
           tache.status = 'instable';
-    
+          this.emitTaceSubject();
         }
     
     }
@@ -41,10 +55,12 @@ export class TacheService{
     //gestion activation ou desactivation une tache par son indice
     switchOnOne(i:number){
         this.taches[i].status = 'stable';
+        this.emitTaceSubject();
     }
     
     switchOffOne(i:number){
         this.taches[i].status = 'instable';
+        this.emitTaceSubject();
     }
 
     getTacheById(id:number){
