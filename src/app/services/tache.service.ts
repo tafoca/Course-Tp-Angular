@@ -71,4 +71,17 @@ export class TacheService{
         );
         return tache;
     }
+
+    addTache(name: string, status: string) {
+        const tache = {
+          id: 0,
+          name: '',
+          status: ''
+        };
+        tache.name = name;
+        tache.status = status;
+        tache.id = this.taches[(this.taches.length - 1)].id + 1;
+        this.taches.push(tache);
+        this.emitTaceSubject();
+    }
 }

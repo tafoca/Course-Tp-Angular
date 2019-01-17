@@ -20,6 +20,7 @@ import { EditTacheComponent } from './edit-tache/edit-tache.component';
 const appRoutes: Routes = [
   { path: 'taches', canActivate: [AuthGuard], component: TacheViewComponent },
   { path: 'taches/:id', canActivate: [AuthGuard], component: SingleTacheComponent },
+  { path: 'edit', canActivate: [AuthGuard], component: EditTacheComponent },
   { path: '', component: TacheViewComponent },
   {path: 'auth', component: AuthComponent},
   {path: 'taches/:id',component:SingleTacheComponent},

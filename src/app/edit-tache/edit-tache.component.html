@@ -2,7 +2,7 @@
 
   <div class="col-sm-8 col-sm-offset-2">
 
-    <form>
+    <form (ngSubmit)="onSubmit(f)" #f="ngForm" >
 
       <div class="form-group">
 
@@ -12,7 +12,7 @@
 
         </label>
 
-        <input type="text" id="name" class="form-control"  name="name" ngModel>
+        <input type="text" id="name" class="form-control"  name="name" ngModel required>
 
       </div>
 
@@ -24,7 +24,7 @@
 
         </label>
 
-        <select id="status" class="form-control"  name="status" ngModel>
+        <select id="status" class="form-control"  name="status" [ngModel]="defaultStatus">
 
           <option value="stable">Stable</option>
 
@@ -34,7 +34,7 @@
 
       </div>
 
-      <button class="btn btn-primary" type="submit">Enregistrer</button>
+      <button class="btn btn-primary" type="submit" [disabled]="f.invalid">Enregistrer</button>
 
     </form>
 
